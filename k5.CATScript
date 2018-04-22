@@ -1,0 +1,897 @@
+Language = "VBSCRIPT"
+Sub CATMain()
+
+Dim documents1 As Documents
+Set documents1 = CATIA.Documents
+
+Dim partDocument1 As Document
+Set partDocument1 = documents1.Add("Part")
+
+Dim part1 As Part
+Set part1 = partDocument1.Part
+
+Dim bodies1 As Bodies
+Set bodies1 = part1.Bodies
+
+Dim body1 As Body
+Set body1 = bodies1.Item("PartBody")
+
+Dim sketches1 As Sketches
+Set sketches1 = body1.Sketches
+
+Dim originElements1 As OriginElements
+Set originElements1 = part1.OriginElements 
+
+Dim shapeFactory1 As Factory
+Set shapeFactory1 = part1.ShapeFactory
+
+Dim reference1 As AnyObject
+Set reference1 = originElements1.PlaneXY
+
+
+Dim sketch1 As Sketch
+Set sketch1 = sketches1.Add(reference1)
+
+Dim arrayOfVariantOfDouble1(8)
+arrayOfVariantOfDouble1(0) = 0.000000
+arrayOfVariantOfDouble1(1) = 0.000000
+arrayOfVariantOfDouble1(2) = 0.000000
+arrayOfVariantOfDouble1(3) = 1.000000
+arrayOfVariantOfDouble1(4) = 0.000000
+arrayOfVariantOfDouble1(5) = 0.000000
+arrayOfVariantOfDouble1(6) = 0.000000
+arrayOfVariantOfDouble1(7) = 1.000000
+arrayOfVariantOfDouble1(8) = 0.000000
+sketch1.SetAbsoluteAxisData arrayOfVariantOfDouble1
+
+Dim factory2D1 As Factory2D
+Set factory2D1 = sketch1.OpenEdition()
+
+Dim geometricElements1 As GeometricElements
+Set geometricElements1 = sketch1.GeometricElements
+
+Dim axis2D1 As GeometricElement
+Set axis2D1 = geometricElements1.Item("AbsoluteAxis")
+
+Dim line2D1 As CATBaseDispatch
+Set line2D1 = axis2D1.GetItem("HDirection")
+
+line2D1.ReportName = 1
+
+Dim line2D2 As CATBaseDispatch
+Set line2D2 = axis2D1.GetItem("VDirection")
+
+line2D2.ReportName = 2
+
+Dim point2D1 As Point2D
+Set point2D1 = factory2D1.CreatePoint(0.000000, 0.000000)
+
+point2D1.ReportName = 3
+
+Dim point2D2 As Point2D
+Set point2D2 = factory2D1.CreatePoint(100.000000, 0.000000)
+
+point2D2.ReportName = 4
+
+Dim line2D3 As Line2D
+Set line2D3 = factory2D1.CreateLine(0.000000, 0.000000, 100.000000, 0.000000)
+
+line2D3.ReportName = 5
+
+line2D3.StartPoint = point2D1
+
+line2D3.EndPoint = point2D2
+
+Dim point2D3 As Point2D
+Set point2D3 = factory2D1.CreatePoint(100.000000, 0.000000)
+
+point2D3.ReportName = 6
+
+Dim point2D4 As Point2D
+Set point2D4 = factory2D1.CreatePoint(100.000000, 5.000000)
+
+point2D4.ReportName = 7
+
+Dim line2D4 As Line2D
+Set line2D4 = factory2D1.CreateLine(100.000000, 0.000000, 100.000000, 5.000000)
+
+line2D4.ReportName = 8
+
+line2D4.StartPoint = point2D3
+
+line2D4.EndPoint = point2D4
+
+Dim point2D5 As Point2D
+Set point2D5 = factory2D1.CreatePoint(100.000000, 5.000000)
+
+point2D5.ReportName = 9
+
+Dim point2D6 As Point2D
+Set point2D6 = factory2D1.CreatePoint(80.000000, 5.000000)
+
+point2D6.ReportName = 10
+
+Dim line2D5 As Line2D
+Set line2D5 = factory2D1.CreateLine(100.000000, 5.000000, 80.000000, 5.000000)
+
+line2D5.ReportName = 11
+
+line2D5.StartPoint = point2D5
+
+line2D5.EndPoint = point2D6
+
+Dim point2D7 As Point2D
+Set point2D7 = factory2D1.CreatePoint(80.000000, 5.000000)
+
+point2D7.ReportName = 12
+
+Dim point2D8 As Point2D
+Set point2D8 = factory2D1.CreatePoint(80.000000, 95.000000)
+
+point2D8.ReportName = 13
+
+Dim line2D6 As Line2D
+Set line2D6 = factory2D1.CreateLine(80.000000, 5.000000, 80.000000, 95.000000)
+
+line2D6.ReportName = 14
+
+line2D6.StartPoint = point2D7
+
+line2D6.EndPoint = point2D8
+
+Dim point2D9 As Point2D
+Set point2D9 = factory2D1.CreatePoint(80.000000, 95.000000)
+
+point2D9.ReportName = 15
+
+Dim point2D10 As Point2D
+Set point2D10 = factory2D1.CreatePoint(100.000000, 95.000000)
+
+point2D10.ReportName = 16
+
+Dim line2D7 As Line2D
+Set line2D7 = factory2D1.CreateLine(80.000000, 95.000000, 100.000000, 95.000000)
+
+line2D7.ReportName = 17
+
+line2D7.StartPoint = point2D9
+
+line2D7.EndPoint = point2D10
+
+Dim point2D11 As Point2D
+Set point2D11 = factory2D1.CreatePoint(100.000000, 95.000000)
+
+point2D11.ReportName = 18
+
+Dim point2D12 As Point2D
+Set point2D12 = factory2D1.CreatePoint(100.000000, 100.000000)
+
+point2D12.ReportName = 19
+
+Dim line2D8 As Line2D
+Set line2D8 = factory2D1.CreateLine(100.000000, 95.000000, 100.000000, 100.000000)
+
+line2D8.ReportName = 20
+
+line2D8.StartPoint = point2D11
+
+line2D8.EndPoint = point2D12
+
+Dim point2D13 As Point2D
+Set point2D13 = factory2D1.CreatePoint(100.000000, 100.000000)
+
+point2D13.ReportName = 21
+
+Dim point2D14 As Point2D
+Set point2D14 = factory2D1.CreatePoint(0.000000, 100.000000)
+
+point2D14.ReportName = 22
+
+Dim line2D9 As Line2D
+Set line2D9 = factory2D1.CreateLine(100.000000, 100.000000, 0.000000, 100.000000)
+
+line2D9.ReportName = 23
+
+line2D9.StartPoint = point2D13
+
+line2D9.EndPoint = point2D14
+
+Dim point2D15 As Point2D
+Set point2D15 = factory2D1.CreatePoint(0.000000, 100.000000)
+
+point2D15.ReportName = 24
+
+Dim point2D16 As Point2D
+Set point2D16 = factory2D1.CreatePoint(0.000000, 0.000000)
+
+point2D16.ReportName = 25
+
+Dim line2D10 As Line2D
+Set line2D10 = factory2D1.CreateLine(0.000000, 100.000000, 0.000000, 0.000000)
+
+line2D10.ReportName = 26
+
+line2D10.StartPoint = point2D15
+
+line2D10.EndPoint = point2D16
+
+Dim point2D17 As Point2D
+Set point2D17 = factory2D1.CreatePoint(0.000000, 0.000000)
+
+point2D17.ReportName = 27
+
+Dim point2D18 As Point2D
+Set point2D18 = factory2D1.CreatePoint(0.000000, 100.000000)
+
+point2D18.ReportName = 28
+
+Dim line2D11 As Line2D
+Set line2D11 = factory2D1.CreateLine(0.000000, 0.000000, 0.000000, 100.000000)
+
+sketch1.CenterLine = line2D11 
+
+sketch1.CloseEdition 
+
+part1.InWorkObject = body1
+
+part1.Update
+
+Dim shaft1 As Shaft
+Set shaft1 = shapeFactory1.AddNewShaft(sketch1)
+
+part1.Update
+
+Dim reference2 As AnyObject
+Set reference2 = originElements1.PlaneZX
+
+
+Dim sketch2 As Sketch
+Set sketch2 = sketches1.Add(reference2)
+
+Dim arrayOfVariantOfDouble2(8)
+arrayOfVariantOfDouble2(0) = 0.000000
+arrayOfVariantOfDouble2(1) = 0.000000
+arrayOfVariantOfDouble2(2) = 0.000000
+arrayOfVariantOfDouble2(3) = 0.000000
+arrayOfVariantOfDouble2(4) = 0.000000
+arrayOfVariantOfDouble2(5) = 1.000000
+arrayOfVariantOfDouble2(6) = 1.000000
+arrayOfVariantOfDouble2(7) = 0.000000
+arrayOfVariantOfDouble2(8) = 0.000000
+sketch2.SetAbsoluteAxisData arrayOfVariantOfDouble2
+
+Dim factory2D2 As Factory2D
+Set factory2D2 = sketch2.OpenEdition()
+
+Dim geometricElements2 As GeometricElements
+Set geometricElements2 = sketch2.GeometricElements
+
+Dim axis2D2 As GeometricElement
+Set axis2D2 = geometricElements2.Item("AbsoluteAxis")
+
+Dim line2D12 As CATBaseDispatch
+Set line2D12 = axis2D2.GetItem("HDirection")
+
+line2D12.ReportName = 1
+
+Dim line2D13 As CATBaseDispatch
+Set line2D13 = axis2D2.GetItem("VDirection")
+
+line2D13.ReportName = 2
+
+Dim point2D19 As Point2D
+Set point2D19 = factory2D2.CreatePoint(90.000000, 90.000000)
+
+point2D19.ReportName = 3
+
+Dim point2D20 As Point2D
+Set point2D20 = factory2D2.CreatePoint(-90.000000, 90.000000)
+
+point2D20.ReportName = 4
+
+Dim line2D14 As Line2D
+Set line2D14 = factory2D2.CreateLine(90.000000, 90.000000, -90.000000, 90.000000)
+
+line2D14.ReportName = 5
+
+line2D14.StartPoint = point2D19
+
+line2D14.EndPoint = point2D20
+
+Dim point2D21 As Point2D
+Set point2D21 = factory2D2.CreatePoint(-90.000000, 90.000000)
+
+point2D21.ReportName = 6
+
+Dim point2D22 As Point2D
+Set point2D22 = factory2D2.CreatePoint(-90.000000, -90.000000)
+
+point2D22.ReportName = 7
+
+Dim line2D15 As Line2D
+Set line2D15 = factory2D2.CreateLine(-90.000000, 90.000000, -90.000000, -90.000000)
+
+line2D15.ReportName = 8
+
+line2D15.StartPoint = point2D21
+
+line2D15.EndPoint = point2D22
+
+Dim point2D23 As Point2D
+Set point2D23 = factory2D2.CreatePoint(-90.000000, -90.000000)
+
+point2D23.ReportName = 9
+
+Dim point2D24 As Point2D
+Set point2D24 = factory2D2.CreatePoint(90.000000, -90.000000)
+
+point2D24.ReportName = 10
+
+Dim line2D16 As Line2D
+Set line2D16 = factory2D2.CreateLine(-90.000000, -90.000000, 90.000000, -90.000000)
+
+line2D16.ReportName = 11
+
+line2D16.StartPoint = point2D23
+
+line2D16.EndPoint = point2D24
+
+Dim point2D25 As Point2D
+Set point2D25 = factory2D2.CreatePoint(90.000000, -90.000000)
+
+point2D25.ReportName = 12
+
+Dim point2D26 As Point2D
+Set point2D26 = factory2D2.CreatePoint(90.000000, 90.000000)
+
+point2D26.ReportName = 13
+
+Dim line2D17 As Line2D
+Set line2D17 = factory2D2.CreateLine(90.000000, -90.000000, 90.000000, 90.000000)
+
+line2D17.ReportName = 14
+
+line2D17.StartPoint = point2D25
+
+line2D17.EndPoint = point2D26
+
+sketch2.CloseEdition 
+
+part1.InWorkObject = body1
+
+part1.Update
+
+Dim pad1 As Pad
+Set pad1 = shapeFactory1.AddNewPad(sketch2, 0.0)
+
+Dim limit1 As Limit
+Set limit1 = pad1.FirstLimit
+
+limit1.LimitMode = catOffsetLimit
+
+Dim length1 As Length
+Set length1 = limit1.Dimension
+
+length1.Value = 5.000000
+
+Dim limit2 As Limit
+Set limit2 = pad1.SecondLimit
+
+limit2.LimitMode = catOffsetLimit
+
+pad1.DirectionOrientation = catRegularOrientation
+
+part1.Update
+
+Dim reference3 As AnyObject
+Set reference3 = originElements1.PlaneZX
+
+
+Dim sketch3 As Sketch
+Set sketch3 = sketches1.Add(reference3)
+
+Dim arrayOfVariantOfDouble3(8)
+arrayOfVariantOfDouble3(0) = 0.000000
+arrayOfVariantOfDouble3(1) = 0.000000
+arrayOfVariantOfDouble3(2) = 0.000000
+arrayOfVariantOfDouble3(3) = 0.000000
+arrayOfVariantOfDouble3(4) = 0.000000
+arrayOfVariantOfDouble3(5) = 1.000000
+arrayOfVariantOfDouble3(6) = 1.000000
+arrayOfVariantOfDouble3(7) = 0.000000
+arrayOfVariantOfDouble3(8) = 0.000000
+sketch3.SetAbsoluteAxisData arrayOfVariantOfDouble3
+
+Dim factory2D3 As Factory2D
+Set factory2D3 = sketch3.OpenEdition()
+
+Dim geometricElements3 As GeometricElements
+Set geometricElements3 = sketch3.GeometricElements
+
+Dim axis2D3 As GeometricElement
+Set axis2D3 = geometricElements3.Item("AbsoluteAxis")
+
+Dim line2D18 As CATBaseDispatch
+Set line2D18 = axis2D3.GetItem("HDirection")
+
+line2D18.ReportName = 1
+
+Dim line2D19 As CATBaseDispatch
+Set line2D19 = axis2D3.GetItem("VDirection")
+
+line2D19.ReportName = 2
+
+Dim point2D27 As Point2D
+Set point2D27 = factory2D3.CreatePoint(80.000000, 80.000000)
+
+point2D27.ReportName = 3
+
+Dim circle2D1 As Circle2D
+Set circle2D1 = factory2D3.CreateClosedCircle(80.000000, 80.000000, 5.000000)
+
+circle2D1.ReportName = 4
+
+sketch3.CloseEdition 
+
+part1.InWorkObject = body1
+
+part1.Update
+
+Dim pocket1 As Pocket
+Set pocket1 = shapeFactory1.AddNewPocket(sketch3, 0.0)
+
+Dim limit3 As Limit
+Set limit3 = pocket1.FirstLimit
+
+limit3.LimitMode = catOffsetLimit
+
+Dim length2 As Length
+Set length2 = limit3.Dimension
+
+length2.Value = 5.000000
+
+Dim limit4 As Limit
+Set limit4 = pocket1.SecondLimit
+
+limit4.LimitMode = catOffsetLimit
+
+pocket1.DirectionOrientation = catRegularOrientation
+
+part1.Update
+
+Dim reference4 As Reference
+Set reference4 = part1.CreateReferenceFromName("")
+
+Dim reference5 As Reference
+Set reference5 = part1.CreateReferenceFromName("")
+
+Dim rectPattern1 As RectPattern
+Set rectPattern1 = shapeFactory1.AddNewRectPattern(pocket1, 2, 2, -160.000000, -160.000000, 1, 1, reference4, reference5, True, True, 0)
+
+rectPattern1.FirstRectangularPatternParameters = catInstancesandSpacing
+
+rectPattern1.SecondRectangularPatternParameters = catInstancesandSpacing
+
+Dim reference6 As Reference
+Set reference6 = originElements1.PlaneZX
+
+rectPattern1.SetFirstDirection reference6
+
+rectPattern1.SetSecondDirection reference6
+
+part1.Update
+
+Dim reference7 As Reference
+Set reference7 = part1.CreateReferenceFromName("Selection_RSur:(Face:(Brp:(Shaft.1;0:(Brp:(Sketch.1;23)));None:();Cf11:());Shaft.1_ResultOUT;Z0;G3563)")
+
+Dim sketch4 As Sketch
+Set sketch4 = sketches1.Add(reference7)
+
+Dim arrayOfVariantOfDouble4(8)
+arrayOfVariantOfDouble4(0) = 50.000000
+arrayOfVariantOfDouble4(1) = 100.000000
+arrayOfVariantOfDouble4(2) = 0.000000
+arrayOfVariantOfDouble4(3) = 1.000000
+arrayOfVariantOfDouble4(4) = 0.000000
+arrayOfVariantOfDouble4(5) = 0.000000
+arrayOfVariantOfDouble4(6) = 0.000000
+arrayOfVariantOfDouble4(7) = -0.000000
+arrayOfVariantOfDouble4(8) = -1.000000
+sketch4.SetAbsoluteAxisData arrayOfVariantOfDouble4
+
+Dim factory2D4 As Factory2D
+Set factory2D4 = sketch4.OpenEdition()
+
+Dim geometricElements4 As GeometricElements
+Set geometricElements4 = sketch4.GeometricElements
+
+Dim axis2D4 As GeometricElement
+Set axis2D4 = geometricElements4.Item("AbsoluteAxis")
+
+Dim line2D20 As CATBaseDispatch
+Set line2D20 = axis2D4.GetItem("HDirection")
+
+line2D20.ReportName = 1
+
+Dim line2D21 As CATBaseDispatch
+Set line2D21 = axis2D4.GetItem("VDirection")
+
+line2D21.ReportName = 2
+
+Dim point2D28 As Point2D
+Set point2D28 = factory2D4.CreatePoint(15.000000, 65.000000)
+
+point2D28.ReportName = 3
+
+Dim circle2D2 As Circle2D
+Set circle2D2 = factory2D4.CreateClosedCircle(15.000000, 65.000000, 5.000000)
+
+circle2D2.ReportName = 4
+
+sketch4.CloseEdition 
+
+part1.InWorkObject = body1
+
+part1.Update
+
+Dim pocket2 As Pocket
+Set pocket2 = shapeFactory1.AddNewPocket(sketch4, 0.0)
+
+Dim limit5 As Limit
+Set limit5 = pocket2.FirstLimit
+
+limit5.LimitMode = catOffsetLimit
+
+Dim length3 As Length
+Set length3 = limit5.Dimension
+
+length3.Value = 5.000000
+
+Dim limit6 As Limit
+Set limit6 = pocket2.SecondLimit
+
+limit6.LimitMode = catOffsetLimit
+
+pocket2.DirectionOrientation = catInverseOrientation
+
+part1.Update
+
+Dim reference8 As Reference
+Set reference8 = part1.CreateReferenceFromName("")
+
+Dim reference9 As Reference
+Set reference9 = part1.CreateReferenceFromName("")
+
+Dim circPattern1 As CircPattern
+Set circPattern1 = shapeFactory1.AddNewCircPattern(pocket2, 1, 4.0, 20, 90.0, 1, 1, reference8, reference9, True, 0, True)
+
+circPattern1.CircularPatternParameters = catInstancesandAngularSpacing
+
+Dim reference10 As Reference
+Set reference10 = originElements1.PlaneZX
+
+circPattern1.SetRotationAxis reference10
+
+part1.Update
+
+Dim reference11 As Reference
+Set reference11 = part1.CreateReferenceFromName("Selection_RSur:(Face:(Brp:(Shaft.1;0:(Brp:(Sketch.1;23)));None:();Cf11:());Shaft.1_ResultOUT;Z0;G3563)")
+
+Dim sketch5 As Sketch
+Set sketch5 = sketches1.Add(reference11)
+
+Dim arrayOfVariantOfDouble5(8)
+arrayOfVariantOfDouble5(0) = 50.000000
+arrayOfVariantOfDouble5(1) = 100.000000
+arrayOfVariantOfDouble5(2) = 0.000000
+arrayOfVariantOfDouble5(3) = 1.000000
+arrayOfVariantOfDouble5(4) = 0.000000
+arrayOfVariantOfDouble5(5) = 0.000000
+arrayOfVariantOfDouble5(6) = 0.000000
+arrayOfVariantOfDouble5(7) = -0.000000
+arrayOfVariantOfDouble5(8) = -1.000000
+sketch5.SetAbsoluteAxisData arrayOfVariantOfDouble5
+
+Dim factory2D5 As Factory2D
+Set factory2D5 = sketch5.OpenEdition()
+
+Dim geometricElements5 As GeometricElements
+Set geometricElements5 = sketch5.GeometricElements
+
+Dim axis2D5 As GeometricElement
+Set axis2D5 = geometricElements5.Item("AbsoluteAxis")
+
+Dim line2D22 As CATBaseDispatch
+Set line2D22 = axis2D5.GetItem("HDirection")
+
+line2D22.ReportName = 1
+
+Dim line2D23 As CATBaseDispatch
+Set line2D23 = axis2D5.GetItem("VDirection")
+
+line2D23.ReportName = 2
+
+Dim point2D29 As Point2D
+Set point2D29 = factory2D5.CreatePoint(-50.000000, 0.000000)
+
+point2D29.ReportName = 3
+
+Dim circle2D3 As Circle2D
+Set circle2D3 = factory2D5.CreateClosedCircle(-50.000000, 0.000000, 75.000000)
+
+circle2D3.ReportName = 4
+
+sketch5.CloseEdition 
+
+part1.InWorkObject = body1
+
+part1.Update
+
+Dim pocket3 As Pocket
+Set pocket3 = shapeFactory1.AddNewPocket(sketch5, 0.0)
+
+Dim limit7 As Limit
+Set limit7 = pocket3.FirstLimit
+
+limit7.LimitMode = catOffsetLimit
+
+Dim length4 As Length
+Set length4 = limit7.Dimension
+
+length4.Value = 95.000000
+
+Dim limit8 As Limit
+Set limit8 = pocket3.SecondLimit
+
+limit8.LimitMode = catOffsetLimit
+
+pocket3.DirectionOrientation = catInverseOrientation
+
+part1.Update
+
+Dim reference12 As Reference
+Set reference12 = part1.CreateReferenceFromName("Selection_RSur:(Face:(Brp:(Pocket.3;2);None:();Cf11:());Pocket.3_ResultOUT;Z0;G3563)")
+
+Dim sketch6 As Sketch
+Set sketch6 = sketches1.Add(reference12)
+
+Dim arrayOfVariantOfDouble6(8)
+arrayOfVariantOfDouble6(0) = 0.000000
+arrayOfVariantOfDouble6(1) = 5.000000
+arrayOfVariantOfDouble6(2) = 0.000000
+arrayOfVariantOfDouble6(3) = 1.000000
+arrayOfVariantOfDouble6(4) = 0.000000
+arrayOfVariantOfDouble6(5) = 0.000000
+arrayOfVariantOfDouble6(6) = 0.000000
+arrayOfVariantOfDouble6(7) = 0.000000
+arrayOfVariantOfDouble6(8) = -1.000000
+sketch6.SetAbsoluteAxisData arrayOfVariantOfDouble6
+
+Dim factory2D6 As Factory2D
+Set factory2D6 = sketch6.OpenEdition()
+
+Dim geometricElements6 As GeometricElements
+Set geometricElements6 = sketch6.GeometricElements
+
+Dim axis2D6 As GeometricElement
+Set axis2D6 = geometricElements6.Item("AbsoluteAxis")
+
+Dim line2D24 As CATBaseDispatch
+Set line2D24 = axis2D6.GetItem("HDirection")
+
+line2D24.ReportName = 1
+
+Dim line2D25 As CATBaseDispatch
+Set line2D25 = axis2D6.GetItem("VDirection")
+
+line2D25.ReportName = 2
+
+Dim point2D30 As Point2D
+Set point2D30 = factory2D6.CreatePoint(0.000000, 0.000000)
+
+point2D30.ReportName = 3
+
+Dim circle2D4 As Circle2D
+Set circle2D4 = factory2D6.CreateClosedCircle(0.000000, 0.000000, 60.000000)
+
+circle2D4.ReportName = 4
+
+sketch6.CloseEdition 
+
+part1.InWorkObject = body1
+
+part1.Update
+
+Dim pad2 As Pad
+Set pad2 = shapeFactory1.AddNewPad(sketch6, 0.0)
+
+Dim limit9 As Limit
+Set limit9 = pad2.FirstLimit
+
+limit9.LimitMode = catOffsetLimit
+
+Dim length5 As Length
+Set length5 = limit9.Dimension
+
+length5.Value = 20.000000
+
+Dim limit10 As Limit
+Set limit10 = pad2.SecondLimit
+
+limit10.LimitMode = catOffsetLimit
+
+pad2.DirectionOrientation = catRegularOrientation
+
+part1.Update
+
+Dim reference13 As Reference
+Set reference13 = part1.CreateReferenceFromName("Selection_RSur:(Face:(Brp:(Pad.2;2);None:();Cf11:());Pad.2_ResultOUT;Z0;G3563)")
+
+Dim sketch7 As Sketch
+Set sketch7 = sketches1.Add(reference13)
+
+Dim arrayOfVariantOfDouble7(8)
+arrayOfVariantOfDouble7(0) = 0.000000
+arrayOfVariantOfDouble7(1) = 25.000000
+arrayOfVariantOfDouble7(2) = 0.000000
+arrayOfVariantOfDouble7(3) = 1.000000
+arrayOfVariantOfDouble7(4) = 0.000000
+arrayOfVariantOfDouble7(5) = 0.000000
+arrayOfVariantOfDouble7(6) = 0.000000
+arrayOfVariantOfDouble7(7) = 0.000000
+arrayOfVariantOfDouble7(8) = -1.000000
+sketch7.SetAbsoluteAxisData arrayOfVariantOfDouble7
+
+Dim factory2D7 As Factory2D
+Set factory2D7 = sketch7.OpenEdition()
+
+Dim geometricElements7 As GeometricElements
+Set geometricElements7 = sketch7.GeometricElements
+
+Dim axis2D7 As GeometricElement
+Set axis2D7 = geometricElements7.Item("AbsoluteAxis")
+
+Dim line2D26 As CATBaseDispatch
+Set line2D26 = axis2D7.GetItem("HDirection")
+
+line2D26.ReportName = 1
+
+Dim line2D27 As CATBaseDispatch
+Set line2D27 = axis2D7.GetItem("VDirection")
+
+line2D27.ReportName = 2
+
+Dim point2D31 As Point2D
+Set point2D31 = factory2D7.CreatePoint(0.000000, 0.000000)
+
+point2D31.ReportName = 3
+
+Dim circle2D5 As Circle2D
+Set circle2D5 = factory2D7.CreateClosedCircle(0.000000, 0.000000, 25.000000)
+
+circle2D5.ReportName = 4
+
+Dim point2D32 As Point2D
+Set point2D32 = factory2D7.CreatePoint(0.000000, 0.000000)
+
+point2D32.ReportName = 5
+
+Dim circle2D6 As Circle2D
+Set circle2D6 = factory2D7.CreateClosedCircle(0.000000, 0.000000, 20.000000)
+
+circle2D6.ReportName = 6
+
+sketch7.CloseEdition 
+
+part1.InWorkObject = body1
+
+part1.Update
+
+Dim pad3 As Pad
+Set pad3 = shapeFactory1.AddNewPad(sketch7, 0.0)
+
+Dim limit11 As Limit
+Set limit11 = pad3.FirstLimit
+
+limit11.LimitMode = catOffsetLimit
+
+Dim length6 As Length
+Set length6 = limit11.Dimension
+
+length6.Value = 20.000000
+
+Dim limit12 As Limit
+Set limit12 = pad3.SecondLimit
+
+limit12.LimitMode = catOffsetLimit
+
+pad3.DirectionOrientation = catRegularOrientation
+
+part1.Update
+
+Dim reference14 As Reference
+Set reference14 = part1.CreateReferenceFromName("Selection_RSur:(Face:(Brp:(Pad.2;2);None:();Cf11:());Pad.2_ResultOUT;Z0;G3563)")
+
+Dim sketch8 As Sketch
+Set sketch8 = sketches1.Add(reference14)
+
+Dim arrayOfVariantOfDouble8(8)
+arrayOfVariantOfDouble8(0) = 0.000000
+arrayOfVariantOfDouble8(1) = 25.000000
+arrayOfVariantOfDouble8(2) = 0.000000
+arrayOfVariantOfDouble8(3) = 1.000000
+arrayOfVariantOfDouble8(4) = 0.000000
+arrayOfVariantOfDouble8(5) = 0.000000
+arrayOfVariantOfDouble8(6) = 0.000000
+arrayOfVariantOfDouble8(7) = 0.000000
+arrayOfVariantOfDouble8(8) = -1.000000
+sketch8.SetAbsoluteAxisData arrayOfVariantOfDouble8
+
+Dim factory2D8 As Factory2D
+Set factory2D8 = sketch8.OpenEdition()
+
+Dim geometricElements8 As GeometricElements
+Set geometricElements8 = sketch8.GeometricElements
+
+Dim axis2D8 As GeometricElement
+Set axis2D8 = geometricElements8.Item("AbsoluteAxis")
+
+Dim line2D28 As CATBaseDispatch
+Set line2D28 = axis2D8.GetItem("HDirection")
+
+line2D28.ReportName = 1
+
+Dim line2D29 As CATBaseDispatch
+Set line2D29 = axis2D8.GetItem("VDirection")
+
+line2D29.ReportName = 2
+
+Dim point2D33 As Point2D
+Set point2D33 = factory2D8.CreatePoint(0.000000, 0.000000)
+
+point2D33.ReportName = 3
+
+Dim circle2D7 As Circle2D
+Set circle2D7 = factory2D8.CreateClosedCircle(0.000000, 0.000000, 10.000000)
+
+circle2D7.ReportName = 4
+
+Dim point2D34 As Point2D
+Set point2D34 = factory2D8.CreatePoint(0.000000, 0.000000)
+
+point2D34.ReportName = 5
+
+Dim circle2D8 As Circle2D
+Set circle2D8 = factory2D8.CreateClosedCircle(0.000000, 0.000000, 5.000000)
+
+circle2D8.ReportName = 6
+
+sketch8.CloseEdition 
+
+part1.InWorkObject = body1
+
+part1.Update
+
+Dim pad4 As Pad
+Set pad4 = shapeFactory1.AddNewPad(sketch8, 0.0)
+
+Dim limit13 As Limit
+Set limit13 = pad4.FirstLimit
+
+limit13.LimitMode = catOffsetLimit
+
+Dim length7 As Length
+Set length7 = limit13.Dimension
+
+length7.Value = 20.000000
+
+Dim limit14 As Limit
+Set limit14 = pad4.SecondLimit
+
+limit14.LimitMode = catOffsetLimit
+
+pad4.DirectionOrientation = catRegularOrientation
+
+part1.Update
+
+End Sub
